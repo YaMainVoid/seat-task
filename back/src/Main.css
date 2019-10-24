@@ -1,0 +1,287 @@
+:root {
+    --free-color:   #0077EE;
+    --panel-bgc:    #FCFCFC;
+    --panel-color:  #5B5B5B;
+    --button-color: #FFFFFF;
+    --button-bgc:   var(--free-color);
+    --border-color: #D2D2D2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.Main {
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+    font-family: "Segoe UI";
+    color: var(--panel-color);
+    background-color: var(--panel-bgc);
+    height: 100vh;
+    min-height: 724px;
+}
+
+.InfoCard {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 64px;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.InfoCard-Title {
+    position: absolute;
+    left: 20px;
+}
+
+.InfoCard-Question {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-color: var(--panel-color);
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+}
+
+.InfoCard-Question:hover {
+    cursor: help;
+}
+
+.LeftPanel {
+    position: relative;
+    width: 276px;
+    border-left: 1px solid;
+    border-right: 1px solid var(--border-color);
+}
+
+.CreateTable {
+    position: relative;
+    height: 135px;
+}
+
+.CreateTable-Table {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid var(--free-color); 
+    top: 26px;
+    left: 42px;
+}
+
+.InputNumber {
+    position: absolute;
+    right: 33px;
+    font-size: 14px;
+}
+
+.InputNumber-Title {
+    display: inline-block;
+}
+
+.InputNumber-Input {
+    display: inline-block;
+    margin-left: 9px;
+    width: 49px;
+    height: 29px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--panel-color);
+}
+
+.CreateButton {
+    position: absolute;
+    color: var(--button-color);
+    width: 81px;
+    height: 29px;
+    background-color: var(--button-bgc);
+    border: none;
+    right: 33px;
+    cursor: pointer;
+}
+
+.CreateTable:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 135px;
+    left: 28px;
+    width: 210px;
+    border-top: 1px solid var(--border-color);
+}
+
+.CreateSeats {
+    position: relative;
+    height: 180px;
+}
+
+.CreateSeats-Seats {
+    position: absolute;
+    top: 26px;
+    left: 40px;
+    width: 90px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.CreateSeats-Seat {
+    width: 9px;
+    height: 9px;
+    margin: 3px;
+    border: 1px solid var(--free-color);
+    border-radius: 1px;
+}
+
+.CreateScene {
+    position: relative;
+    height: 217px;
+}
+
+.CreateScene-Block {
+    font-size: 16px;
+    position: absolute;
+    right: 33px;
+    top: 26px;
+    display: flex;
+    width: 209px;
+    height: 29px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CreateScene-Input {
+    font-size: 13px;
+    height: 29px;
+    padding-left: 5px;
+    width: 158px;
+}
+
+.CreateScene-Label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 209px;
+    height: 65px;
+    background-color: #EBEBEB;
+    position: absolute;
+    right: 33px;
+    top: 68px;
+}
+
+.CenterPanel {
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1;
+}
+
+.TopPanel {
+    display: flex;
+    height: 64px;
+    flex-direction: row-reverse;
+    overflow: hidden;
+    align-items: center;
+    flex-grow: 1;
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.TopPanel-SaveButton {
+    width: 104px;
+    height: 33px;
+    margin-right: 30px;
+    background-color: var(--button-bgc);
+    color: var(--button-color);
+    border: none;
+    cursor: pointer;
+}
+
+.Sandbox {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+    border-bottom: 1px solid var(--border-color)
+}
+
+.RightPanel {
+    width: 193px;
+    border: 1px solid var(--border-color);
+}
+
+.RightPanel-Title {
+    height: 63px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color)
+}
+
+.Table {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--free-color);
+    border-radius: 50%;
+    cursor: grab;
+}
+
+.Scene {
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background-color: #EBEBEB;
+    cursor: grab;
+}
+
+.Seats {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 10px;
+    cursor: grab;
+}
+
+.Seat {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-weight: bold;
+}
+
+.Seat_default {
+    align-items: center;
+    border-radius: 2px;
+    border: 1px solid var(--free-color);
+}
+
+.Seat_row-info {
+    align-items: flex-end;
+}
+
+.ResultModalWindow {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 130px;
+    width: 250px;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: black;
+    font-weight: bold;
+}
