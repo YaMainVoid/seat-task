@@ -28,7 +28,6 @@ class CreateButton extends Component {
                     height: tableHeight,
                     top: 50,
                     left: 50,
-                    cost: 1,
                     spec: {
                         state: 'free',
                         cost: 0,
@@ -50,7 +49,6 @@ class CreateButton extends Component {
                     height,
                     top: 100,
                     left: 50,
-                    cost: 1,
                     spec: {
                         seatWidth,
                         seatHeight,
