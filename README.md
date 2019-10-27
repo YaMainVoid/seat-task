@@ -148,4 +148,19 @@ Order data is array of objects. Every object has these structure
 
 ## Back in detail
 
+Everything is intuitively (if you clearly know react redux :P), but I'll talk about reducers. This will help to quickly understand program logic.
+
+In ***reducers folder*** are 6 files 
+* ***componentsStore.js*** - state is array of objects. Initially empty array. After clicking on **Create button** component will be added at componentsStore and its structure will have the same structure as the objects from the array that is transferred to the server ([*see the transmitted data structure/components data structure*](#transmitted-data-structure)) ***Note***: the state won't contain object with field `type: 'container'`, the object will added when we'll generate data for sending to server
+* ***currentDragComponent.js*** - state is object. Initially empty object. When we start drag component, the component removes from componentsStore store and adds at currentDragComponent. When we finished to drag component adds at componentsStore and removes from currentDragComponent (state will be empty)
+* ***index.js*** - there exports all reducers and combines, nothing unexpected :)
+* ***inputsStore.js*** - state is array of objects. There store all inputs info (3 inputs with type number and 1 input with type text to be precise). Object has thise structure 
+```js
+{
+    name: String,
+    value: String
+}
+```
+* ***resultModalWindow.js***
+* ***serverCommunication.js***
 

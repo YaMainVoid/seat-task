@@ -1,17 +1,6 @@
 export default function orderStore(state = [], action) {
     if (action.type === "ADD_COMPONENT") {
-        let { id, type, width, height, top, left, spec } = action.info
-
-        const obj = {
-            id,
-            type,
-            width,
-            height,
-            top,
-            left,
-            spec
-        }
-        return [...state, obj];
+        return [...state, action.info];
     }
 
     if (action.type === "RM_COMPONENT") {

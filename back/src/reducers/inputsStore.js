@@ -1,12 +1,6 @@
 export default function inputsStore(state = [], action) {
     if (action.type === 'ADD_INPUT') {
-        let { name, value } = action.info
-
-        return [...state, {
-                name,
-                value
-            }
-        ]
+        return [...state, action.info]
     }
 
     if (action.type === 'UPDATE_INPUT') {
