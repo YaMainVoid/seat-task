@@ -1,11 +1,11 @@
 # Seat task 
 
 The project contains **constructor in *back folder*** that helps you create different furnishings (tables, seats, scene) **using drag and drop**. 
-<!-- photo  -->
+![constructor demo](./readme-photos/constructor-demo.PNG)
 
 
 Also contains ***front folder***. There are **guests** can see furnishings and **make orders**.
-<!-- photo -->
+![front demo](./readme-photos/front-demo.PNG)
 
 ***Server folder*** contains logic that **take requests** and **give responses**.  Detailed description below.
 
@@ -161,6 +161,8 @@ In ***reducers folder*** are 6 files
     value: String
 }
 ```
-* ***resultModalWindow.js***
-* ***serverCommunication.js***
+* ***resultModalWindow.js*** - state is object that contains two fields `message: ''` and `state: ''`. The `state` field can have 1 of 4 values: `''`, `'sending'`, `'successful'`, `'failed'`. When the admin clicks on the **save button** state is `'sending'`, data sended to server successfuly `'successful'`, something went wrong `'failed'`.
+* ***serverCommunication.js*** - state is object that contains one field, it's `error: ''`. When an error occurs while transferring data to the server, the `error` will contain a line describing the problem.
+
+***You can use Redux DevTools to understand even better what is happening in the program.***
 

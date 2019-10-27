@@ -10,7 +10,7 @@ class Table extends Component {
 
     handleDragStart(e) {
         let el;
-        while(el = document.getElementById('delete')) {
+        while(el = document.getElementById('__delete__')) {
             document.getElementById('root').removeChild(el);
         }
 
