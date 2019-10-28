@@ -6,35 +6,16 @@ let initialState = {
 
 export default function resultModalWindowMainpulator(state = initialState, action) {
     switch(action.type) {
+        // commented out because sending is rapid
         // case 'DATA_HAS_SANDED_MODAL': 
-        //     return {
-        //         message: action.info.message,
-        //         state: 'sending'
-        //     }
-        //     break;
+        //     return action.info;
         case 'DATA_SENDED_SUCCESSFUL_MODAL': 
-            return {
-                message: action.info.message,
-                state: 'success'
-            }
-            break;
+            return action.info;
         case 'DATA_SENDED_UNSECCESSFUL_MODAL':
-            return {
-                message: action.info.message,
-                state: 'failed'
-            }
-            break;
+            return action.info;
         case 'RESET_MODAL': 
-            return {
-                message: '',
-                state: ''
-            }
-            break;
+            return initialState;
         default:
-            return {
-                message: '',
-                state: ''
-            }
-            break;
+            return initialState;
     }
 }

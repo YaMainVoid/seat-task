@@ -1,22 +1,10 @@
 export default function inputsStore(state = [], action) {
-    if (action.type === 'ADD_INPUT') {
-        return [...state, action.info]
+    switch(action.type) {
+        case 'ADD_INPUT':
+            return [...state, action.info];
+        case 'UPDATE_INPUT':
+            return state.map(input => action.info.name === input.name ? action.info : input);
+        default:
+            return state;
     }
-
-    if (action.type === 'UPDATE_INPUT') {
-        let { name, value } = action.info
-
-        return state.map(obj => {
-            if (name === obj.name) {
-                return {
-                    name,
-                    value
-                }
-            } else {
-                return obj;
-            }
-        })
-    }
-
-    return state;
 }

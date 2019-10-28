@@ -6,7 +6,7 @@ export class OrderBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            totalCost: 20.46
+            totalCost: 0 
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -15,25 +15,19 @@ export class OrderBar extends Component {
         this.props.sendOrders(this.props.orderStore);
     }
 
-    componentWillUpdate() {
+    render() {
+
         let totalCost = 0;
         if (!this.props.orderStore) {
             return;
         }
-        this.props.orderStore.map(order => totalCost += order.cost)
-        // this.setState({
-        //     totalCost
-        // })
-        console.log(this.state.totalCost)
-    }
+        this.props.orderStore.forEach(order => totalCost += order.cost)
 
-    render() {
-
-        if (this.state.totalCost) {
+        if (totalCost) {
             return (
                 <div className="OrderBar">
                     <div className="OrderBar-Title">Information</div>
-                    <div className="OrderBar-TotalCostInfo">Total cost: { this.state.totalCost }$</div>
+                    <div className="OrderBar-TotalCostInfo">Total cost: { totalCost }$</div>
                     <button className="OrderBar-OrderButton"
                             onClick={ this.handleClick }
                     >Buy</button>

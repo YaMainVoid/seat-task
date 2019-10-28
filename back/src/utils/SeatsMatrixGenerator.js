@@ -3,7 +3,10 @@ import id from './id';
 export default class SeatsMatrixGenerator {
     static generateContent(row) {
         let content;
+
+        // 65 - code of A letter in unicode system
         let A = 65;
+
         // 26 - count of letters in english alphabet :)
         // if the condition passed then will get AA, BB, CC ect instead of incomprehensible stuffs
         if (row > 26) {

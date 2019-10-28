@@ -129,6 +129,11 @@ This ```state``` is similar to the state of the table's ```spec.state```
 ```javascript
 [
     {
+        type: 'container',
+        width: 600,
+        height: 100,
+    }
+    {
         id: 2,
         type: "table",
         width: 46,

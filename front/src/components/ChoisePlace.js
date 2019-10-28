@@ -39,17 +39,14 @@ class ChoisePlace extends Component {
                                     return <Table key={ component.id }
                                                   params={ component }    
                                             />
-                                    break;
                                 case 'seats': 
                                     return <Seats key={ component.id }
                                                   params={ component }    
                                             />
-                                    break
                                 case 'scene': 
                                     return <Scene key={ component.id }
                                                   params={ component }    
                                             />
-                                    break;
                             }
                         })
                     }

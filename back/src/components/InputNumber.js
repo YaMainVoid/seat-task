@@ -26,14 +26,14 @@ class InputNumber extends Component {
             <div className="InputNumber"
                  style={{top: `${this.props.top}px`}}
             >
-                <div className="InputNumber-Title">{this.props.title}</div>
+                <div className="InputNumber-Title">{ this.props.title }</div>
                 <input className="InputNumber-Input"
                        type="number"
-                       onChange={this.handleChange}
-                       value={this.value}
-                       min={this.props.min || '1'}
-                       max={this.props.max || '9999'}
-                       step={this.props.step || '1'}
+                       onChange={ this.handleChange }
+                       value={ this.value}
+                       min={ this.props.min || '1' }
+                       max={ this.props.max || '9999' }
+                       step={ this.props.step || '1' }
                 />
             </div>
         )

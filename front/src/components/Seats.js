@@ -19,7 +19,8 @@ class Seats extends Component {
                  style={ style }
             >
                 {
-                    seats_matrix.map((row,currentRow) => row.map((chair, currentChair) => <Seat key={ chair.id }
+                    seats_matrix.map((row,currentRow) => row.map((chair, currentChair) => (
+                                                             <Seat key={ chair.id }
                                                                    info={ chair }
                                                                    width={ seatWidth }
                                                                    height={ seatHeight }
@@ -27,7 +28,7 @@ class Seats extends Component {
                                                                    marginBottom={ seatMarginBottom }
                                                                    row={ currentRow + 1}
                                                                    chair={ currentChair }
-                                                             />))
+                                                             />)))
                 }
             </div>
         )

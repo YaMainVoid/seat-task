@@ -74,7 +74,6 @@ class Table extends Component {
 export default connect(
     store => ({
         orderStore: store.orderStore
-    }), {
-        addOrder, rmOrder
-    }
+    }), 
+    { addOrder, rmOrder }
 )(Table)

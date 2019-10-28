@@ -29,5 +29,6 @@ class TopPanel extends Component {
 export default connect(
     state => ({
         components:  state.componentsStore,
-    }),{ sendData, resetModal }
+    }),
+    { sendData, resetModal }
 )(TopPanel)

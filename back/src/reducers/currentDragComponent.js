@@ -1,11 +1,10 @@
 export default function currentDragComponent(state = {}, action) {
-    if (action.type === 'SET_DRAG_COMPONENT') {
-        return action.info;
+    switch(action.type) {
+        case 'SET_DRAG_COMPONENT':
+            return action.info;
+        case 'RM_DRAG_COMPONENT':
+            return {};
+        default: 
+            return state;
     }
-
-    if (action.type === 'RM_DRAG_COMPONENT') {
-        return {};
-    }
-
-    return state;
 }

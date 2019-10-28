@@ -43,6 +43,7 @@ class Sandbox extends Component {
                 break;
             case 'seats': 
                 this.props.addComponent(component)
+                break;
         }
 
         this.props.rmDrag();
@@ -53,7 +54,7 @@ class Sandbox extends Component {
     }
 
     render() {
-        const style = { background: `url(${repeatedBgc})`}
+        const style = { background: `url(${repeatedBgc})` }
         return (
             <div className="Sandbox"
                  style={ style }
@@ -67,12 +68,10 @@ class Sandbox extends Component {
                                 return <Table params={component}
                                               key={component.id}
                                         />
-                                break;
                             case 'scene':
                                 return <Scene params={component}
                                               key={component.id}
                                         />
-                                break;
                             case 'seats': 
                                 return <Seats params={component}
                                               key={component.id}
