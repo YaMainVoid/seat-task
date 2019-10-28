@@ -213,7 +213,15 @@ This ```state``` is similar to the state of the table's ```spec.state```
         }
     },
     {
-
+        id: 15,
+        type: "scene",
+        width: 600,
+        height: 80,
+        top: 60,
+        left: 20,
+        spec: {
+            name: 'Random text'
+        }
     }
 ]
 ```
@@ -279,6 +287,9 @@ In ***reducers folder*** are 6 files
 * ***serverCommunication.js*** - state is object that contains one field, it's `error: ''`. When an error occurs while transferring data to the server, the `error` will contain a line describing the problem.
 
 ***You can use Redux DevTools to understand even better what is happening in the program.***
+
+#### May be interesting:
+When you start dragging a component, a copy is created in the real DOM tree with the position absolute and left -1000 and this copy using like a draggable image (if don't do it then draggable image will look awful). When dragging has ended the copy is removed. It's not a spaggety, it's only one right way to set correct draggable image when you use html 5 dnd api.
 
 ## Front in detail 
 

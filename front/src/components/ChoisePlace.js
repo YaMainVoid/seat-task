@@ -58,7 +58,5 @@ class ChoisePlace extends Component {
 
 export default connect(
     store => store,
-    {
-        fetchComponents
-    }
+    { fetchComponents }
 )(ChoisePlace);
