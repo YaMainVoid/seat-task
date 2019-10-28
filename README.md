@@ -92,6 +92,7 @@ Where state can have these values ```'free' || 'booked'```
     seats_matrix: Array of Arrays
 }
 ```
+***Note***: only count seats are included in chairs, not row number. [See below for an example](#example).
 
 Now let's take a closer look at ```seats_matrix``` it's two-dimensional array. **The array contains arrays of objects**. Each object has **type field**.
 
@@ -121,9 +122,100 @@ object for ```type: 'seat'```
 
 This ```state``` is similar to the state of the table's ```spec.state```
 
-<!-- Example code with scree -->
+#### Example
+
+![front demo](./readme-photos/transmitted-data.PNG)
+
+```javascript
+[
+    {
+        id: 2,
+        type: "table",
+        width: 46,
+        height: 46,
+        top: 29,
+        left: 30,
+        spec: {
+            state: "free",
+            cost: 0,
+            qty: 7
+        }
+    },
+    {
+        id: 13,
+        type: "seats",
+        width: 102,
+        height: 90,
+        top: 20,
+        left: 466,
+        spec: {
+            seatWidth: 18,
+            seatHeight: 18,
+            seatMargin: 6,
+            seatMarginBottom: 12,
+            rows: 2,
+            chairs: 2,
+            seats_matrix: [
+                [
+                    {
+                        id: 4,
+                        type: 'row_info',
+                        existed: true,
+                        content: 'A'
+                    },
+                    {
+                        id: 5,
+                        type: 'seat',
+                        existed: true,
+                        content: 1,
+                        cost: 0,
+                        state: 'free'
+                    },
+                    {
+                        id: 6,
+                        type: 'seat',
+                        existed: true,
+                        content: 2,
+                        cost: 0,
+                        state: 'free'
+                    }
+                ],
+                [
+                    {
+                        id: 7,
+                        type: 'row_info',
+                        existed: true,
+                        content: 'B'
+                    },
+                    {
+                        id: 8,
+                        type: 'seat',
+                        existed: true,
+                        content: 1,
+                        cost: 0,
+                        state: 'free'
+                    },
+                    {
+                        id: 9,
+                        type: 'seat',
+                        existed: true,
+                        content: 2,
+                        cost: 0,
+                        state: 'free'
+                    }
+                ]
+            ]
+        }
+    },
+    {
+
+    }
+]
+```
 
 ### Order data structure
+
+***Note***: the structure is specific to front end part 
 
 Order data is array of objects. Every object has these structure 
 
@@ -144,7 +236,29 @@ Order data is array of objects. Every object has these structure
     chair: Number
 }
 ```
-<!-- Example + photo -->
+
+#### Example
+![order example](./readme-photos/orders-example.png)
+
+```javascript
+[
+    {
+        type: 'table',
+        id: 2,
+        cost: 0,
+        additionalInfo: { /* nothing */ }
+    },
+    {
+        type: 'seat',
+        id: 5,
+        cost: 0,
+        additionalInfo: { 
+            row: 1,
+            chair: 1
+        }
+    }
+]
+```
 
 ## Back in detail
 
@@ -154,15 +268,19 @@ In ***reducers folder*** are 6 files
 * ***componentsStore.js*** - state is array of objects. Initially empty array. After clicking on **Create button** component will be added at componentsStore and its structure will have the same structure as the objects from the array that is transferred to the server ([*see the transmitted data structure/components data structure*](#transmitted-data-structure)) ***Note***: the state won't contain object with field `type: 'container'`, the object will added when we'll generate data for sending to server
 * ***currentDragComponent.js*** - state is object. Initially empty object. When we start drag component, the component removes from componentsStore store and adds at currentDragComponent. When we finished to drag component adds at componentsStore and removes from currentDragComponent (state will be empty)
 * ***index.js*** - there exports all reducers and combines, nothing unexpected :)
-* ***inputsStore.js*** - state is array of objects. There store all inputs info (3 inputs with type number and 1 input with type text to be precise). Object has thise structure 
-```js
-{
-    name: String,
-    value: String
-}
-```
+* ***inputsStore.js*** - state is array of objects. There store all inputs info (3 inputs with type number and 1 input with type text to be precise). Object has two fields `'name'`, `'value'`.
+
 * ***resultModalWindow.js*** - state is object that contains two fields `message: ''` and `state: ''`. The `state` field can have 1 of 4 values: `''`, `'sending'`, `'successful'`, `'failed'`. When the admin clicks on the **save button** state is `'sending'`, data sended to server successfuly `'successful'`, something went wrong `'failed'`.
 * ***serverCommunication.js*** - state is object that contains one field, it's `error: ''`. When an error occurs while transferring data to the server, the `error` will contain a line describing the problem.
 
 ***You can use Redux DevTools to understand even better what is happening in the program.***
 
+## Front in detail 
+
+Let's take a closer look at reducers.
+
+In ***reducers folder*** are 4 files
+* ***componentsStore.js*** - state is array of objects. On page loading data will be loaded from server. The data will have the structure described above. Check [*transmitted data structure/components data structure*](#transmitted-data-structure).
+* ***index.js*** - there exports and combines all reducers. 
+* ***orderStore.js*** - state is array of objects. Each object has these fields `'id'`, `'type`', `'cost`', `'additionalInfo'`. ***Important***: `'id'` from ***ordersStore*** is similar to `'id'` from ***componentsStore***. `'type`' can have these values: `'table'`, `'seat'`. `'additionalInfo'` for `'table'` is empty object, for `'seat'` is object contains `'row'`, `'chair'` fields.
+* ***serverCommunication.js*** - state is object that contains one field, it's `error: ''`. When an error occurs while transferring data to the server, the `error` will contain a line describing the problem.
