@@ -5,7 +5,7 @@ class InfoCard extends Component {
         return (
             <div className="InfoCard">
                 <div className="InfoCard-Title">{ this.props.children }</div>
-                <div className="InfoCard-Question">?</div>
+                {/* <div className="InfoCard-Question">?</div> */}
             </div>
         )
     }

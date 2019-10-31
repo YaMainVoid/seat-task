@@ -7,5 +7,5 @@ export const seatWidth = 18;
 export const seatHeight = 18;
 export const seatMargin = 6;
 export const seatMarginBottom = 12;
-export const sceneWidth = 600;
+export const sceneWidth = 200;
 export const sceneHeight = 80;

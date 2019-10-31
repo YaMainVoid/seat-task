@@ -1,63 +1,68 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { rmComponent, setDrag } from '../api';
+import { rmComponent, setDrag, addComponent } from '../api';
+import { Rnd } from 'react-rnd'
 
 class Scene extends Component {
     constructor(props) {
         super(props);
-        this.handleDragStart = this.handleDragStart.bind(this);
-    }
-
-    handleDragStart(e) {
-        let el;
-        while(el = document.getElementById('delete')) {
-            document.getElementById('root').removeChild(el);
-        }
-
-        let { id, type, state, width, height, spec } = this.props.params;
-
-        this.props.setDrag({
-            id,
-            type,
-            state,
+        this.handleDragStop   = this.handleDragStop.bind(this);
+        this.handleResizeStop = this.handleResizeStop.bind(this);
+        let { width, height, top, left } = this.props.params;
+        this.state = {
             width,
             height,
-            offsetX: e.nativeEvent.layerX,
-            offsetY: e.nativeEvent.layerY,
-            spec
-        });
+            top,
+            left
+        }
+    }
 
-        let image = this.scene.cloneNode(true);
-        image.style.left = '-1000px'
-        image.id = '__delete__'
-        document.getElementById('root').appendChild(image)
+    handleDragStop(e, d) {
+        const component = this.props.params;
+        component.top   = d.y;
+        component.left  = d.x;
+        this.props.rmComponent(component.id);
+        this.props.addComponent(component)
+    }
 
-        e.dataTransfer.setDragImage(image, e.nativeEvent.layerX, e.nativeEvent.layerY);
-
-        setTimeout(() => this.props.rmComponent(id), 0);
+    handleResizeStop(e, direction, ref, delta, position) {
+        console.log(delta)
+        const component   = this.props.params;
+        component.top     = position.y;
+        component.left    = position.x;
+        component.width  += delta.width;
+        component.height += delta.height;
+        this.props.rmComponent(component.id);
+        this.props.addComponent(component)
     }
 
     render() {
-        let { width, height, top, left, spec: { name } } = this.props.params;
+        let { width, height, left, top, spec: { name } } = this.props.params;
 
         let style = {
-            top:    `${top}px`,
-            left:   `${left}px`,
-            width:  `${width}px`,
-            height: `${height}px`,
+            cursor: 'grab',
+            display: 'flex',
+            justifyContent: 'center',
+            itemsAlign: 'center'
         }
 
         return (
-            <div style={ style } 
-                 className="Scene"
-                 draggable="true"
-                 ref={ (scene => this.scene = scene) }
-                 onDragStart={ this.handleDragStart }
+            // link to Rnd https://github.com/bokuweb/react-rnd
+            <Rnd className='Scene'
+                 style={ style }
+                 default={{
+                     x: left,
+                     y: top,
+                     width,
+                     height,
+                 }}
+                 onDragStop={ this.handleDragStop }
+                 onResizeStop={ this.handleResizeStop }
             >
                 { name }
-            </div>
+            </Rnd>
         )
     }
 }
 
-export default connect(null, { setDrag, rmComponent })(Scene);
+export default connect(null, { setDrag, rmComponent, addComponent })(Scene);
