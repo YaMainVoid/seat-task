@@ -11,20 +11,20 @@ Also contains ***front folder***. There are **guests** can see furnishings and *
 
 ## Installation
 ```bash 
-git clone https://github.com/YaMainVoid/seat-task.git
+$ git clone https://github.com/YaMainVoid/seat-task.git
 ```
 When project have been downloaded you have to 
 ```bash
-cd back 
-npm i 
-cd ../
-cd front 
-npm i
-cd ../
-cd server
-npm i
+$ cd back 
+$ npm i 
+$ cd ../
+$ cd front 
+$ npm i
+$ cd ../
+$ cd server
+$ npm i
 ```
-You also can run the project using  ```npm start``` from back, front, server
+You also can run the project using  ```$ npm start``` from back, front, server folders
 
 ## Transmitted data structure
 ### Components data structure
