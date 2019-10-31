@@ -38,9 +38,6 @@ class Sandbox extends Component {
             case 'table': 
                 this.props.addComponent(component)
                 break;
-            case 'scene': 
-                // this.props.addComponent(component)
-                break;
             case 'seats': 
                 this.props.addComponent(component)
                 break;

@@ -92,7 +92,7 @@ Where state can have these values ```'free' || 'booked'```
     seats_matrix: Array of Arrays
 }
 ```
-***Note***: only count seats are included in chairs, not row number. [See below for an example](#example).
+***Note***: only count of seats are included in chairs, not row number. [See below for an example](#example).
 
 Now let's take a closer look at ```seats_matrix``` it's two-dimensional array. **The array contains arrays of objects**. Each object has **type field**.
 
@@ -279,7 +279,7 @@ Everything is intuitively (if you clearly know react redux :P), but I'll talk ab
 
 In ***reducers folder*** are 6 files 
 * ***componentsStore.js*** - state is array of objects. Initially empty array. After clicking on **Create button** component will be added at componentsStore and its structure will have the same structure as the objects from the array that is transferred to the server ([*see the transmitted data structure/components data structure*](#transmitted-data-structure)) ***Note***: the state won't contain object with field `type: 'container'`, the object will added when we'll generate data for sending to server
-* ***currentDragComponent.js*** - state is object. Initially empty object. When we start drag component, the component removes from componentsStore store and adds at currentDragComponent. When we finished to drag component adds at componentsStore and removes from currentDragComponent (state will be empty)
+* ***currentDragComponent.js*** - state is object. Initially empty object. When we start drag component, the component removes from componentsStore store and adds at currentDragComponent. When we finished to drag component adds at componentsStore and removes from currentDragComponent (state will be empty). ***Note:*** applies only for **Table** and **Seats**. **Scene** uses rnd (resizable and draggable) package, dragging happens without using  ***currentDragComponent***.
 * ***index.js*** - there exports all reducers and combines, nothing unexpected :)
 * ***inputsStore.js*** - state is array of objects. There store all inputs info (3 inputs with type number and 1 input with type text to be precise). Object has two fields `'name'`, `'value'`.
 
